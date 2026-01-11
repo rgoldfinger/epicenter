@@ -16,18 +16,29 @@ import { IS_WINDOWS } from '$lib/constants/platform';
 import type { Settings } from '$lib/settings';
 import {
 	DEEPGRAM_TRANSCRIPTION_MODELS,
+	MAX_FILE_SIZE_MB as DEEPGRAM_MAX_FILE_SIZE_MB,
 	type DeepgramModel,
 } from './cloud/deepgram';
 import {
 	ELEVENLABS_TRANSCRIPTION_MODELS,
+	MAX_FILE_SIZE_MB as ELEVENLABS_MAX_FILE_SIZE_MB,
 	type ElevenLabsModel,
 } from './cloud/elevenlabs';
-import { GROQ_MODELS, type GroqModel } from './cloud/groq';
 import {
+	GROQ_MODELS,
+	MAX_FILE_SIZE_MB as GROQ_MAX_FILE_SIZE_MB,
+	type GroqModel,
+} from './cloud/groq';
+import {
+	MAX_FILE_SIZE_MB as MISTRAL_MAX_FILE_SIZE_MB,
 	MISTRAL_TRANSCRIPTION_MODELS,
 	type MistralModel,
 } from './cloud/mistral';
-import { OPENAI_TRANSCRIPTION_MODELS, type OpenAIModel } from './cloud/openai';
+import {
+	MAX_FILE_SIZE_MB as OPENAI_MAX_FILE_SIZE_MB,
+	OPENAI_TRANSCRIPTION_MODELS,
+	type OpenAIModel,
+} from './cloud/openai';
 
 type TranscriptionModel =
 	| OpenAIModel
@@ -138,7 +149,7 @@ export const TRANSCRIPTION_SERVICES = [
 		modelSettingKey: 'transcription.groq.model',
 		apiKeyField: 'apiKeys.groq',
 		location: 'cloud',
-		maxFileSizeMB: 25,
+		maxFileSizeMB: GROQ_MAX_FILE_SIZE_MB,
 	},
 	{
 		id: 'OpenAI',
@@ -151,7 +162,7 @@ export const TRANSCRIPTION_SERVICES = [
 		modelSettingKey: 'transcription.openai.model',
 		apiKeyField: 'apiKeys.openai',
 		location: 'cloud',
-		maxFileSizeMB: 25,
+		maxFileSizeMB: OPENAI_MAX_FILE_SIZE_MB,
 	},
 	{
 		id: 'ElevenLabs',
@@ -164,7 +175,7 @@ export const TRANSCRIPTION_SERVICES = [
 		modelSettingKey: 'transcription.elevenlabs.model',
 		apiKeyField: 'apiKeys.elevenlabs',
 		location: 'cloud',
-		maxFileSizeMB: 1000,
+		maxFileSizeMB: ELEVENLABS_MAX_FILE_SIZE_MB,
 	},
 	{
 		id: 'Deepgram',
@@ -177,7 +188,7 @@ export const TRANSCRIPTION_SERVICES = [
 		modelSettingKey: 'transcription.deepgram.model',
 		apiKeyField: 'apiKeys.deepgram',
 		location: 'cloud',
-		maxFileSizeMB: 500,
+		maxFileSizeMB: DEEPGRAM_MAX_FILE_SIZE_MB,
 	},
 	{
 		id: 'Mistral',
@@ -190,7 +201,7 @@ export const TRANSCRIPTION_SERVICES = [
 		modelSettingKey: 'transcription.mistral.model',
 		apiKeyField: 'apiKeys.mistral',
 		location: 'cloud',
-		maxFileSizeMB: 25,
+		maxFileSizeMB: MISTRAL_MAX_FILE_SIZE_MB,
 	},
 	// Self-hosted services
 	{
